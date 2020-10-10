@@ -1,11 +1,30 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Router from 'vue-router'
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
-
-const router = new VueRouter({
-  // routes
+export default new Router({
+    routes: [{
+        path: '/',
+        name: 'main',
+        component: require('@/components/main')
+    },{
+    	path:'/share/:id',//布局分享
+    	name:'share',
+        component: require('@/components/main')
+    }, {
+        path: '/preview/mobile',//手机预览
+        name: 'preview_mobile',
+        component: require('@/components/preview_mobile')
+    }, {
+        path: '/preview/pc/',//正常pc浏览
+        name: 'preview_product',
+        component: require('@/components/preview_product')
+    }, {
+        path: '/preview/pc/:id',//指定布局的正常pc浏览
+        component: require('@/components/preview_product')
+    }, {
+        path: '*',
+        redirect: '/'
+    }]
 })
-
-export default router
